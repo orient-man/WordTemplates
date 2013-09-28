@@ -8,7 +8,7 @@ namespace WordTemplates
 {
     public class WordTemplateNavigator : ITemplateNavigator
     {
-        // i.e.: CompanyName, CompanyName_1 itd.
+        // i.e.: CompanyName, CompanyName_1 etc.
         private static readonly Regex BookmarkNameRegex =
             new Regex(@"(?<name>[a-zA-Z0-9]+)(?<number>_\d+)?");
 
@@ -101,6 +101,7 @@ namespace WordTemplates
 
         private void SetBookmarkValue(Bookmark bookmark, object value)
         {
+            // no need to keep bookmarks and they get in the way in tables
             var checkBox = _doc.FormFields[bookmark.Name].CheckBox;
             if (checkBox.Valid)
             {
